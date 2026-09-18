@@ -1,0 +1,43 @@
+---
+/**
+ * The brand video: plays silently on a loop from first paint.
+ * Respects prefers-reduced-motion by leaving the poster frame in place.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const src = "https://utfs.io/f/rd0D2eyhq7vamLERmcyPCOhbo7vjTwdlMPmL1raSKGtfkY2V";
+---
+
+<video
+  class={className}
+  src={src}
+  poster={`${base}hero-poster.jpg`}
+  autoplay
+  muted
+  loop
+  playsinline
+  disablepictureinpicture
+  preload="auto"
+  aria-hidden="true"
+  tabindex="-1"
+  data-hero-video
+></video>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const videos = document.querySelectorAll<HTMLVideoElement>("[data-hero-video]");
+  const sync = () => {
+    videos.forEach((v) => {
+      if (reduce.matches) {
+        v.pause();
+      } else {
+        v.play().catch(() => {});
+      }
+    });
+  };
+  sync();
+  reduce.addEventListener("change", sync);
+</script>

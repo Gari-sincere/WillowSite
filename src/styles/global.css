@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/*
+  Willow brand tokens.
+  The three source colours come straight from the logo file:
+    cream  #f9f1ea  (logo background)
+    forest #3a4d42  (trunk + wordmark)
+    sage   #6cb08b  (fronds)
+  Everything else is a tint or shade of those three.
+*/
+@theme {
+  --color-cream: #f9f1ea;
+  --color-cream-deep: #efe3d6;
+  --color-cream-dim: #e3d4c3;
+
+  --color-forest: #3a4d42;
+  --color-forest-deep: #2a3a31;
+  --color-forest-ink: #1c2822;
+
+  --color-sage: #6cb08b;
+  --color-sage-bright: #8bc9a6;
+  --color-sage-pale: #d7eadf;
+  --color-sage-mist: #edf5f0;
+
+  --font-bricolage: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-newsreader: "Newsreader", ui-serif, Georgia, serif;
+  --font-hanken: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-familjen: "Familjen Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-plex: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-nunito: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sage);
+    outline-offset: 3px;
+  }
+
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}

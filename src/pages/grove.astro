@@ -1,0 +1,190 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+import HeroVideo from "../components/HeroVideo.astro";
+
+const included = [
+  "Unlimited support by phone and email",
+  "New laptops set up before the first day",
+  "Email, files, and accounts managed",
+  "Backups tested every month, not just taken",
+  "Security updates and password policy handled",
+  "A short monthly note on what we did",
+];
+
+const plans = [
+  {
+    name: "Seedling",
+    who: "Up to 15 people",
+    body: "Everything in managed IT, with a named engineer who knows your setup. Best for a company that has never had proper IT and would like to stop worrying about it.",
+  },
+  {
+    name: "Sapling",
+    who: "15 to 60 people",
+    body: "Managed IT plus a quarterly planning session and a small allowance of software hours each month for the integrations and fixes that keep coming up.",
+  },
+  {
+    name: "Grove",
+    who: "60 to 200 people",
+    body: "A part-time technology lead from Willow, embedded with your team, alongside full managed IT and a standing software budget. For companies not quite ready to hire a CTO.",
+  },
+];
+
+const faqs = [
+  { q: "How fast do you respond?", a: "Someone answers the phone during business hours. Emails get a human reply within two hours. If something is stopping people from working, we're on it immediately." },
+  { q: "Do we have to change our systems?", a: "No. We start with what you have and only recommend a change when it will save you money or trouble. Plenty of clients are still happily on the systems they had when we met." },
+  { q: "Can you come on site?", a: "Yes. Most work happens remotely because it's faster, but new equipment, network changes, and office moves are done in person." },
+  { q: "What if we want to leave?", a: "One month's notice. You get your documentation, your accounts, and a handover call with whoever comes next." },
+];
+---
+
+<Layout
+  title="Willow — your IT, looked after"
+  description="Managed IT, custom software, and consulting from a small technology company that answers the phone. Plans for companies with ten to two hundred people."
+  fonts={["Nunito:ital,wght@0,400..900;1,400..900"]}
+  bodyClass="font-nunito bg-cream text-forest antialiased"
+>
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 sm:px-10">
+    <a href="#top" class="flex items-center gap-2.5" aria-label="Willow, back to top">
+      <Logo variant="mark" class="h-10 w-auto text-forest" />
+      <span class="text-2xl font-extrabold tracking-tight">Willow</span>
+    </a>
+    <div class="flex items-center gap-2 text-[15px] font-semibold">
+      <a href="#included" class="hidden rounded-full px-4 py-2 hover:bg-sage-pale md:inline">What's included</a>
+      <a href="#plans" class="hidden rounded-full px-4 py-2 hover:bg-sage-pale md:inline">Plans</a>
+      <a href="#questions" class="hidden rounded-full px-4 py-2 hover:bg-sage-pale md:inline">Questions</a>
+      <a href="#contact" class="rounded-full bg-forest px-5 py-2.5 text-cream hover:bg-forest-deep">Get a quote</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- Split hero -->
+    <header class="mx-auto max-w-7xl px-6 pt-10 sm:px-10 lg:pt-16">
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <h1 class="text-[clamp(2.75rem,6.5vw,5.75rem)] font-extrabold leading-[1] tracking-[-0.03em]">
+            Your IT, looked after.
+          </h1>
+          <p class="mt-7 max-w-[44ch] text-lg leading-relaxed text-forest/85 sm:text-xl">
+            Willow is a small technology company. We manage the laptops, network, email, and backups for businesses with ten to two hundred people, and we build the software and give the advice when you need more.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#contact" class="rounded-full bg-forest px-7 py-4 text-lg font-bold text-cream hover:bg-forest-deep">Get a quote</a>
+            <a href="#included" class="rounded-full border-2 border-forest/20 px-7 py-4 text-lg font-bold hover:border-forest">See what's included</a>
+          </div>
+        </div>
+
+        <!-- The film, in a frame with one big corner -->
+        <div class="lg:col-span-6">
+          <div class="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden rounded-[2rem] rounded-tl-[11rem] bg-forest-deep sm:aspect-[5/6] lg:ml-auto lg:aspect-[4/5]">
+            <HeroVideo class="absolute inset-0 h-full w-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Included: a panel that overlaps the hero's bottom edge -->
+    <section id="included" class="mx-auto max-w-7xl px-6 sm:px-10">
+      <div class="relative -mt-6 rounded-[2rem] bg-sage-pale p-8 sm:p-12 lg:-mt-12 lg:grid lg:grid-cols-12 lg:gap-10">
+        <div class="lg:col-span-4">
+          <h2 class="text-3xl font-extrabold tracking-tight lg:text-4xl">What managed IT includes</h2>
+          <p class="mt-4 max-w-[34ch] leading-relaxed text-forest/80">One fixed fee per person per month. No tickets to count, no hourly surprises.</p>
+        </div>
+        <ul class="mt-8 grid gap-x-10 gap-y-4 text-lg font-semibold sm:grid-cols-2 lg:col-span-8 lg:mt-0">
+          {included.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-forest text-cream" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.5L10 3.5" /></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" class="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-28">
+      <div class="max-w-[52ch]">
+        <h2 class="text-3xl font-extrabold tracking-tight lg:text-4xl">Three ways to work with us</h2>
+        <p class="mt-4 text-lg leading-relaxed text-forest/80">Priced per person per month, with the number on the first page of the quote. Move between them as you grow.</p>
+      </div>
+      <div class="mt-12 grid gap-5 lg:grid-cols-3">
+        {plans.map((p, i) => (
+          <div class:list={["flex flex-col rounded-[1.75rem] p-8", i === 1 ? "bg-forest text-cream" : "border-2 border-forest/15"]}>
+            <Logo variant="mark" frond={i === 1 ? "var(--color-sage-bright)" : "var(--color-sage)"} class:list={["h-10 w-auto self-start", i === 1 ? "text-cream" : "text-forest"]} title="" />
+            <h3 class="mt-6 text-2xl font-extrabold">{p.name}</h3>
+            <p class:list={["mt-1 font-semibold", i === 1 ? "text-sage-bright" : "text-forest/60"]}>{p.who}</p>
+            <p class:list={["mt-4 leading-relaxed", i === 1 ? "text-cream/85" : "text-forest/85"]}>{p.body}</p>
+            <a
+              href="#contact"
+              class:list={[
+                "mt-8 inline-flex self-start rounded-full px-5 py-2.5 font-bold",
+                i === 1 ? "bg-cream text-forest hover:bg-white" : "bg-forest text-cream hover:bg-forest-deep",
+              ]}
+              >Get a quote</a
+            >
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Beyond IT -->
+    <section class="bg-sage-mist">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 sm:px-10 lg:grid-cols-12 lg:py-28">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl font-extrabold tracking-tight lg:text-4xl">When you need more than IT</h2>
+          <p class="mt-4 max-w-[38ch] text-lg leading-relaxed text-forest/80">Most clients start with support. The other two tend to follow once we know how the business works.</p>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:col-span-7">
+          <div class="rounded-[1.75rem] bg-cream p-7">
+            <h3 class="text-xl font-extrabold">Custom software</h3>
+            <p class="mt-2 leading-relaxed text-forest/85">The internal tool, customer portal, or integration that nothing off the shelf quite does. Built in weeks, documented, and owned by you.</p>
+          </div>
+          <div class="rounded-[1.75rem] bg-cream p-7">
+            <h3 class="text-xl font-extrabold">Consulting</h3>
+            <p class="mt-2 leading-relaxed text-forest/85">What to buy, what to build, how to migrate, who to hire. A short written plan with a price beside each option.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section id="questions" class="mx-auto max-w-3xl px-6 py-20 lg:py-28">
+      <h2 class="text-3xl font-extrabold tracking-tight lg:text-4xl">Good questions</h2>
+      <div class="mt-8 space-y-3">
+        {faqs.map((f) => (
+          <details class="group rounded-[1.25rem] border-2 border-forest/15 open:border-forest/40">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-lg font-bold [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-sage-pale text-forest transition-transform duration-200 group-open:rotate-180" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l5 5 5-5" /></svg>
+              </span>
+            </summary>
+            <p class="max-w-[60ch] px-6 pb-6 leading-relaxed text-forest/85">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-7xl px-6 pb-20 sm:px-10 lg:pb-28">
+      <div class="rounded-[2rem] rounded-br-[11rem] bg-forest px-8 py-14 text-cream sm:px-12 lg:px-16 lg:py-20">
+        <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
+          <div class="lg:col-span-7">
+            <h2 class="text-[clamp(2.2rem,4.5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em]">Tell us how many people you have. We'll send a quote by tomorrow.</h2>
+          </div>
+          <div class="lg:col-span-4 lg:col-start-9">
+            <a href="mailto:hello@willow.example?subject=A%20quote%20from%20Willow" class="inline-flex rounded-full bg-cream px-7 py-4 text-lg font-bold text-forest hover:bg-white">Get a quote</a>
+            <p class="mt-5 text-cream/80">Or call for a chat first. <a href="mailto:hello@willow.example" class="font-semibold underline decoration-sage decoration-2 underline-offset-4">hello@willow.example</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto flex max-w-7xl flex-col gap-6 px-6 pb-12 sm:flex-row sm:items-end sm:justify-between sm:px-10">
+    <Logo variant="full" class="h-20 w-auto text-forest" />
+    <p class="text-sm text-forest/70">Managed IT, custom software, and consulting for small companies.</p>
+  </footer>
+</Layout>

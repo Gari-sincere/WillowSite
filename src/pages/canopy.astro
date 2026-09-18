@@ -1,0 +1,224 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+import HeroVideo from "../components/HeroVideo.astro";
+
+const services = [
+  {
+    name: "Managed IT",
+    lead: "Laptops, network, email, backups, security.",
+    body: "We look after the everyday technology so nobody on your team has to be the accidental IT person. Same people every time, a phone number that gets answered, and a monthly note on what we did.",
+  },
+  {
+    name: "Custom software",
+    lead: "The tools your business runs on when nothing off the shelf fits.",
+    body: "Internal apps, customer portals, integrations between systems that were never meant to talk. Built small, shipped early, and kept simple enough that someone else could maintain them.",
+  },
+  {
+    name: "Consulting",
+    lead: "Advice before you spend.",
+    body: "Choosing systems, planning a migration, hiring your first technical person, deciding whether to build or buy. We write it down, put a price on it, and tell you when you don't need us.",
+  },
+];
+
+const steps = [
+  { title: "A conversation", body: "An hour, free, no slides. We ask what's slow, what's fragile, and what you'd do if it all worked." },
+  { title: "A written plan", body: "Two or three pages: what we'd do, in what order, what it costs, what you can skip." },
+  { title: "The work", body: "You see progress every week, in plain language, from the person doing it." },
+  { title: "Staying on", body: "Most clients keep us around for support and small changes. Some don't need to. Either is fine." },
+];
+---
+
+<Layout
+  title="Willow — technology that grows with the business"
+  description="Willow is a small technology company. Managed IT, custom software, and honest consulting for businesses that plan to be around a while."
+  fonts={["Bricolage+Grotesque:opsz,wght@12..96,300..800"]}
+  bodyClass="font-bricolage bg-cream text-forest antialiased"
+  themeColor="#3a4d42"
+>
+  <Fragment slot="head">
+    <style>
+      /* Fronds hang from the top of the hero and settle once on load. */
+      [data-fronds] path {
+        transform-box: fill-box;
+        transform-origin: 50% 0%;
+        animation: frond-drop 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      [data-fronds] path:nth-child(1) { animation-delay: 0.35s; }
+      [data-fronds] path:nth-child(2) { animation-delay: 0.05s; }
+      [data-fronds] path:nth-child(3) { animation-delay: 0.25s; }
+      [data-fronds] path:nth-child(4) { animation-delay: 0.15s; }
+      [data-fronds] path:nth-child(5) { animation-delay: 0.55s; }
+      [data-fronds] path:nth-child(6) { animation-delay: 0.30s; }
+      [data-fronds] path:nth-child(7) { animation-delay: 0.45s; }
+      [data-fronds] path:nth-child(8) { animation-delay: 0.10s; }
+      [data-fronds] path:nth-child(9) { animation-delay: 0.60s; }
+      [data-fronds] path:nth-child(10) { animation-delay: 0.20s; }
+      [data-fronds] path:nth-child(11) { animation-delay: 0.00s; }
+      @keyframes frond-drop {
+        from { transform: scaleY(0.2); opacity: 0; }
+        to { transform: scaleY(1); opacity: 1; }
+      }
+      .hero-copy {
+        animation: rise 1.2s 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      @keyframes rise {
+        from { transform: translateY(18px); opacity: 0; }
+        to { transform: none; opacity: 1; }
+      }
+    </style>
+  </Fragment>
+
+  <!-- Hero -->
+  <header class="relative isolate flex min-h-svh flex-col bg-forest text-cream">
+    <HeroVideo class="absolute inset-0 -z-20 h-full w-full object-cover opacity-70 mix-blend-luminosity" />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-forest-ink via-forest/40 to-forest/30"></div>
+
+    <!-- Logo fronds hanging from the top edge -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center overflow-hidden" aria-hidden="true">
+      <Logo
+        variant="fronds"
+        frond="var(--color-cream)"
+        title=""
+        class="w-[min(160vw,1400px)] -translate-y-[38%] opacity-[0.14] sm:-translate-y-[42%]"
+        data-fronds
+      />
+    </div>
+
+    <nav class="flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
+      <a href="#top" class="flex items-center gap-3 text-cream" aria-label="Willow, back to top">
+        <Logo variant="mark" frond="var(--color-sage-bright)" class="h-9 w-auto" />
+        <span class="text-xl font-semibold tracking-tight">Willow</span>
+      </a>
+      <div class="hidden items-center gap-8 text-[15px] text-cream/85 md:flex">
+        <a href="#services" class="hover:text-cream">Services</a>
+        <a href="#process" class="hover:text-cream">How we work</a>
+        <a href="#contact" class="hover:text-cream">Contact</a>
+      </div>
+      <a
+        href="#contact"
+        class="rounded-full border border-cream/40 px-4 py-2 text-[15px] font-medium text-cream transition-colors hover:border-cream hover:bg-cream hover:text-forest"
+        >Book a conversation</a
+      >
+    </nav>
+
+    <div class="hero-copy mt-auto px-6 pb-14 pt-24 sm:px-10 lg:px-16 lg:pb-20">
+      <h1
+        class="max-w-[14ch] text-[clamp(2.6rem,7.5vw,6.75rem)] font-light leading-[0.98] tracking-[-0.025em] text-cream"
+        style="font-variation-settings: 'opsz' 96"
+      >
+        Technology that grows with the business, not ahead of it.
+      </h1>
+      <div class="mt-10 flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <p class="max-w-[46ch] text-lg leading-relaxed text-cream/85 sm:text-xl">
+          Willow is a small technology company. We keep your systems running, build the software you can't buy, and help you decide what to do next.
+        </p>
+        <a href="#services" class="shrink-0 text-cream/70 hover:text-cream" aria-label="Scroll to services">
+          <svg width="28" height="44" viewBox="0 0 28 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M14 2v38M2 30l12 12 12-12" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Services: three wide rows -->
+    <section id="services" class="px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <h2 class="text-3xl font-medium leading-tight tracking-tight lg:col-span-4 lg:text-4xl">
+          Three things we do, and we do all three for most clients.
+        </h2>
+        <p class="max-w-[52ch] text-lg leading-relaxed text-forest/80 lg:col-span-6 lg:col-start-7">
+          The IT keeps the lights on. The software removes the spreadsheets that were holding everything together. The consulting is where we tell you which of those you actually need this year.
+        </p>
+      </div>
+
+      <ol class="mt-16 divide-y divide-forest/15 border-y border-forest/15">
+        {services.map((s) => (
+          <li class="grid gap-4 py-10 lg:grid-cols-12 lg:gap-8 lg:py-14">
+            <h3
+              class="text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-none tracking-tight lg:col-span-5"
+              style="font-variation-settings: 'opsz' 72"
+            >
+              {s.name}
+            </h3>
+            <div class="lg:col-span-6 lg:col-start-7">
+              <p class="text-xl font-medium leading-snug">{s.lead}</p>
+              <p class="mt-3 max-w-[58ch] text-lg leading-relaxed text-forest/80">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="bg-sage-pale px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
+        <Logo variant="mark" class="h-24 w-auto text-forest lg:col-span-2" title="" />
+        <div class="lg:col-span-8 lg:col-start-4">
+          <h2 class="text-3xl font-medium leading-tight tracking-tight lg:text-4xl">
+            Built for companies with ten to two hundred people.
+          </h2>
+          <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-forest/85">
+            Big enough that technology is a real cost and a real risk. Small enough that hiring a whole IT department, a software team, and a strategy consultant would be absurd. Clinics, law firms, manufacturers, non-profits, distributors, and a few startups that would rather build the product than the back office.
+          </p>
+          <ul class="mt-10 grid gap-x-10 gap-y-4 text-lg sm:grid-cols-2">
+            <li class="flex gap-3"><span class="mt-[0.7em] h-2 w-2 shrink-0 rounded-full bg-forest"></span>One phone number for everything technical</li>
+            <li class="flex gap-3"><span class="mt-[0.7em] h-2 w-2 shrink-0 rounded-full bg-forest"></span>Fixed monthly cost for support</li>
+            <li class="flex gap-3"><span class="mt-[0.7em] h-2 w-2 shrink-0 rounded-full bg-forest"></span>Software you own, with the source code</li>
+            <li class="flex gap-3"><span class="mt-[0.7em] h-2 w-2 shrink-0 rounded-full bg-forest"></span>Advice that isn't tied to a vendor</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process: a real sequence, so it gets numbers -->
+    <section id="process" class="bg-forest px-6 py-20 text-cream sm:px-10 lg:px-16 lg:py-28">
+      <h2 class="max-w-[22ch] text-3xl font-medium leading-tight tracking-tight lg:text-4xl">
+        How an engagement starts, and how it usually keeps going.
+      </h2>
+      <ol class="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {steps.map((step, i) => (
+          <li class="border-t border-cream/25 pt-6">
+            <span class="text-sm text-sage-bright">{i + 1}</span>
+            <h3 class="mt-3 text-2xl font-medium">{step.title}</h3>
+            <p class="mt-3 max-w-[34ch] leading-relaxed text-cream/80">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="px-6 py-20 sm:px-10 lg:px-16 lg:py-32">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-7">
+          <h2
+            class="text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1] tracking-[-0.02em]"
+            style="font-variation-settings: 'opsz' 96"
+          >
+            Start with an hour.
+          </h2>
+          <p class="mt-6 max-w-[48ch] text-lg leading-relaxed text-forest/80">
+            Tell us what's slow or fragile. We'll tell you what we'd do about it, and whether we're the right people to do it.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-4 lg:col-span-4 lg:col-start-9">
+          <a
+            href="mailto:hello@willow.example?subject=A%20conversation%20with%20Willow"
+            class="inline-flex items-center rounded-full bg-forest px-7 py-4 text-lg font-medium text-cream transition-colors hover:bg-forest-deep"
+            >Book a conversation</a
+          >
+          <a href="mailto:hello@willow.example" class="text-lg underline decoration-sage decoration-2 underline-offset-4 hover:decoration-forest">hello@willow.example</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-forest/15 px-6 py-10 sm:px-10 lg:px-16">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <Logo variant="full" class="h-16 w-auto text-forest" />
+      <p class="text-sm text-forest/70">Managed IT, custom software, and consulting for small companies.</p>
+    </div>
+  </footer>
+</Layout>

@@ -1,18 +1,96 @@
 ---
-import MessagesApp from "../components/MessagesApp";
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const concepts = [
+  {
+    slug: "canopy",
+    name: "Canopy",
+    type: "Bricolage Grotesque",
+    leads: "the film",
+    summary: "Full-screen video tinted forest green, with the logo's fronds hanging over it. Services as three wide rows.",
+    swatch: ["#3a4d42", "#f9f1ea", "#6cb08b"],
+  },
+  {
+    slug: "rings",
+    name: "Rings",
+    type: "Newsreader italic with Hanken Grotesk",
+    leads: "steadiness",
+    summary: "The film sits inside tree rings. The rest reads like a calm annual report: a label on the left, the substance on the right.",
+    swatch: ["#f9f1ea", "#3a4d42", "#6cb08b"],
+  },
+  {
+    slug: "branch",
+    name: "Branch",
+    type: "Familjen Grotesk",
+    leads: "plain speech",
+    summary: "One sentence hero with the film embedded in the line. A narrow column, a definition list, and the questions people ask first.",
+    swatch: ["#f9f1ea", "#3a4d42", "#6cb08b"],
+  },
+  {
+    slug: "understory",
+    name: "Understory",
+    type: "IBM Plex Sans and Mono",
+    leads: "custom software",
+    summary: "Deep green ground, sage-tinted film, and a real project brief beside the headline. For clients who arrive with a spreadsheet.",
+    swatch: ["#1c2822", "#6cb08b", "#f9f1ea"],
+  },
+  {
+    slug: "grove",
+    name: "Grove",
+    type: "Nunito",
+    leads: "managed IT",
+    summary: "Rounded like the wordmark. Split hero with the film in a one-big-corner frame, then what's included, three plans, and an FAQ.",
+    swatch: ["#d7eadf", "#3a4d42", "#f9f1ea"],
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-		<link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>WillowSite</title>
-	</head>
-	<body>
-		<h1>Messages</h1>
-		<MessagesApp client:load />
-	</body>
-</html>
+<Layout
+  title="Willow — five landing page concepts"
+  description="Five landing page directions for Willow, a small technology company doing managed IT, custom software, and consulting."
+  fonts={["Hanken+Grotesk:wght@400;500;600"]}
+  bodyClass="font-hanken bg-cream text-forest antialiased"
+>
+  <main class="mx-auto max-w-5xl px-6 py-14 sm:px-10 lg:py-20">
+    <header class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <Logo variant="full" class="h-28 w-auto text-forest" />
+        <h1 class="mt-8 text-3xl font-medium tracking-tight sm:text-4xl">Five landing page concepts</h1>
+        <p class="mt-3 max-w-[54ch] text-lg leading-relaxed text-forest/80">
+          Same company, same three services, same film and logo. Each page takes a different lead, typeface, and structure. Pick one, or point at the parts you'd combine.
+        </p>
+      </div>
+    </header>
+
+    <ol class="mt-14 divide-y divide-forest/15 border-y border-forest/15">
+      {concepts.map((c, i) => (
+        <li>
+          <a href={`${base}${c.slug}`} class="group grid gap-4 py-8 sm:grid-cols-12 sm:gap-8">
+            <div class="flex items-center gap-4 sm:col-span-4">
+              <span class="flex overflow-hidden rounded-md ring-1 ring-forest/15" aria-hidden="true">
+                {c.swatch.map((hex) => (
+                  <span class="block h-10 w-5" style={`background:${hex}`}></span>
+                ))}
+              </span>
+              <div>
+                <h2 class="text-2xl font-medium tracking-tight group-hover:underline">{c.name}</h2>
+                <p class="text-sm text-forest/70">{c.type}</p>
+              </div>
+            </div>
+            <div class="sm:col-span-8">
+              <p class="font-medium">Leads with {c.leads}.</p>
+              <p class="mt-1 max-w-[62ch] leading-relaxed text-forest/80">{c.summary}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <p class="mt-10 text-sm text-forest/60">
+      The Convex messages starter still lives at <a href={`${base}messages`} class="underline underline-offset-4">/messages</a>.
+    </p>
+  </main>
+</Layout>
