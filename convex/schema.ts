@@ -6,4 +6,8 @@ export default defineSchema({
     author: v.string(),
     body: v.string(),
   }),
+  generacUploads: defineTable({
+    storageId: v.id("_storage"),
+    filename: v.string(),
+  }),
 });
