@@ -8,7 +8,6 @@
  * @module
  */
 
-import type * as generacUploads from "../generacUploads.js";
 import type * as messages from "../messages.js";
 
 import type {
@@ -18,7 +17,6 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
-  generacUploads: typeof generacUploads;
   messages: typeof messages;
 }>;
 
